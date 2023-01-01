@@ -1,9 +1,21 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import Cart from "../cart";
+import LoginSignup from "../loginModal";
 
 import { Link } from "react-router-dom";
-import { Tabs, TabList, Tab } from "@chakra-ui/react";
+import { 
+  Tabs, 
+  Button,
+  TabList, 
+  Tab,
+  Container,
+  Flex,
+  Box,
+  Spacer,
+  Heading,
+  Image
+} from "@chakra-ui/react";
 
 function Nav()
 {
@@ -12,47 +24,43 @@ function Nav()
     if (Auth.loggedIn())
     {
       return (
-        <Tabs>
-          <TabList>
-            <Tab>
-              <a href="/" onClick={() => Auth.logout()}>
-                Logout
-              </a>
-            </Tab>
-            <Cart as={Tab} />
-          </TabList>
-        </Tabs>
+        <Box>
+          <a href="/" onClick={() => Auth.logout()}>
+            Logout
+          </a>
+
+          <Cart />
+        </Box>
       );
     } else
     {
       return (
-        <Tabs>
-          <TabList>
-            <Tab>
-              <Link to="/login">Login</Link>
-            </Tab>
-            <Tab>
-              <Link to="/signup">Signup</Link>
-            </Tab>
-            <Cart as={Tab} />
-          </TabList>
-        </Tabs>
+        <Box>
+            <Link to="/login">Login</Link>
+            <LoginSignup />
+            <Cart />
+        </Box>
       );
     }
   }
 
   return (
-    <header>
-      <h1>
-        <Link to="/">
-          <nav aria-labelledby="nav-title">
-            <h2>Artsy</h2>
-          </nav>
-        </Link>
-      </h1>
+    <Container maxW="xxl">
+      <Flex aria-labelledby="nav-title">
+        <Box>
+          <Link to="/">
+              <Image src="/images/ArtsyLogo.png" boxSize="25px"/>
+              Artsy
+          </Link>
+        </Box>
+        
+        <Spacer />
 
-      <nav>{showNavigation()}</nav>
-    </header>
+        <Box>
+          {showNavigation()}
+        </Box>
+      </Flex>
+    </Container>
   );
 }
 

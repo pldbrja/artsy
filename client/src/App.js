@@ -2,15 +2,18 @@ import "./App.css";
 import * as React from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import
-  {
-    ApolloClient,
-    InMemoryCache,
-    ApolloProvider,
-    createHttpLink,
-  } from "@apollo/client";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { ChakraProvider, Box } from "@chakra-ui/react";
+import { 
+  ChakraProvider, 
+  Box,
+  Container,
+} from "@chakra-ui/react";
 
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
@@ -56,10 +59,9 @@ function App()
   return (
     <ApolloProvider client={client}>
       <ArtProvider>
-        <ChakraProvider marginLeft={60}>
-          <Box p='10px'>
+        <ChakraProvider>
+          <Box>
             <Router>
-              <Jumbotron />
               <Nav />
               <Routes>
                 <Route path="/" element={<Home />} />
