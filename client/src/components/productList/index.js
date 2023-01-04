@@ -55,7 +55,6 @@ function ProductList()
 
   return (
     <Box className="my-2">
-      <h2>Artworks:</h2>
       {loading ? (
         <Spinner />
       ) : (

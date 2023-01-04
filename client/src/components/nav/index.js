@@ -14,8 +14,11 @@ import {
   Box,
   Spacer,
   Heading,
-  Image
+  Image,
+  HStack
 } from "@chakra-ui/react";
+
+// Create hamburger menu for mobile use that includes all links from the nav
 
 function Nav()
 {
@@ -24,41 +27,38 @@ function Nav()
     if (Auth.loggedIn())
     {
       return (
-        <Box>
-          <a href="/" onClick={() => Auth.logout()}>
+        <HStack>
+          <a className="nav-link" href="/" onClick={() => Auth.logout()}>
             Logout
           </a>
 
           <Cart />
-        </Box>
+        </HStack>
       );
     } else
     {
       return (
-        <Box>
-            <Link to="/login">Login</Link>
+        <HStack>
             <LoginSignup />
+
             <Cart />
-        </Box>
+        </HStack>
       );
     }
   }
 
   return (
-    <Container maxW="xxl">
+    <Container maxW="xxl" py={3} background="gray.200">
       <Flex aria-labelledby="nav-title">
         <Box>
           <Link to="/">
-              <Image src="/images/ArtsyLogo.png" boxSize="25px"/>
-              Artsy
+            <Image src="/images/ArtsyLogo.png" boxSize="25px" />
           </Link>
         </Box>
         
         <Spacer />
 
-        <Box>
-          {showNavigation()}
-        </Box>
+        {showNavigation()}
       </Flex>
     </Container>
   );

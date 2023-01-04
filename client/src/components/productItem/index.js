@@ -4,7 +4,16 @@ import { Link } from "react-router-dom";
 import { useArtContext } from "../../utils/GlobalState";
 import { UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
-import { Image, Heading, Container, Box, Button, VStack, WrapItem, Center } from "@chakra-ui/react";
+import { 
+  Image, 
+  Heading, 
+  Container, 
+  Box, 
+  Button, 
+  VStack, 
+  WrapItem, 
+  Center 
+} from "@chakra-ui/react";
 import "./style.css";
 
 function ProductItem(item)
@@ -45,20 +54,22 @@ function ProductItem(item)
     <WrapItem className="card px-1 py-1">
       <Center>
         <Container>
-          <VStack spacing="8pt">
+          <Box spacing="8pt">
             <Link to={`/products/${_id}`}>
-              <Image src={`/images/${image}`} alt={name} />
+              <Image src={`/images/${image}`} alt={name}/>
               <Heading size="xl">{name}</Heading>
               <p>{description}</p>
               {quantity < 1 && <p> OUT OF STOCK </p>}
             </Link>
             <Box>
-              <span>${price}</span>
+              <Box>
+                <span>${price}</span>
+              </Box>
+              <Button colorScheme="blue" onClick={addToCart}>
+                Add to cart
+              </Button>  
             </Box>
-            <Button colorScheme="blue" onClick={addToCart}>
-              Add to cart
-            </Button>
-          </VStack>
+          </Box>
         </Container>
       </Center>
     </WrapItem>

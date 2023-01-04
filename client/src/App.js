@@ -15,7 +15,6 @@ import {
   Container,
 } from "@chakra-ui/react";
 
-import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
 import Login from "./pages/Login";
